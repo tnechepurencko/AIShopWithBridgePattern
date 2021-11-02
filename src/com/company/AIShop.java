@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class AIShop {
-    private AbstractFactory factory;
     Scanner in = new Scanner(System.in);
 
     private final static int KEYWORDS_SUBSET_SIZE = 5;
@@ -12,23 +11,15 @@ public class AIShop {
 
     private final List<Product> products = new ArrayList<>();
 
-    public void setFactory(AbstractFactory factory) {
-        this.factory = factory;
-    }
-
-    public AbstractFactory getFactory() {
-        return factory;
-    }
-
     public void fillTheListOfProducts() {
 
-        this.products.add(new ItalianItem("dress", 6.22, "red", "dinosaurs", "Italy"));
+        this.products.add(new Dress("dress", 6.22, "red", "long"));
 
-        this.products.add(new ItalianFood("croissant", 1.33, "Italian"));
+        this.products.add(new Pants("pants", 1.33, "green", "jeans"));
 
-        this.products.add(new FrenchItem("dress", 3.62, "red", "triangles", "France"));
+        this.products.add(new Dress("dress", 3.62, "red", "medium"));
 
-        this.products.add(new FrenchFood("frogs' legs", 84.44, "French"));
+        this.products.add(new WhiteShirt("white short", 84.44));
     }
 
     public void addProduct(Product product) {

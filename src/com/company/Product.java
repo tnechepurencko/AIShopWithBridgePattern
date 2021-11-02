@@ -3,13 +3,13 @@ package com.company;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Product {
+public abstract class Product {
     protected static int idIterator = 0;
 
     private final int id;
-    private final String type;
+    private final String name;
     private final double price;
-    private final Set<String> keywords = new HashSet<>();
+    protected final Set<String> keywords = new HashSet<>();
 
     /**
      * @param userKeyword : the keyword
@@ -23,24 +23,15 @@ public class Product {
         this.id = idIterator;
         idIterator++;
 
-        this.type = type;
+        this.name = type;
         this.price = price;
 
         this.keywords.add(type);
         this.keywords.add(String.valueOf(id));
     }
 
-    public void printProduct(){
-        if (this instanceof Item) {
-            System.out.println("id: " + this.getId() + "; type: " + this.getType() +
-                    "; price: " + this.getPrice() + "; color: " + ((Item)this).getColor() +
-                    "; print: " + ((Item)this).getPrint() + "; origin: " + ((Item)this).getOrigin() +
-                    "; style: " + ((Item)this).getStyle());
-        } else {
-            System.out.println("id: " + this.getId() + "; type: " + this.getType() +
-                    "; price: " + this.getPrice() + "; kitchen: " + ((Food)this).getKitchen() +
-                    "; taste: " + ((Food)this).getTaste());
-        }
+    public void printProduct() {
+        System.out.println("id: " + this.getId() + "; name: " + this.getName() + "; price: " + this.getPrice());
     }
 
     public Set<String> getKeywords() {
@@ -51,8 +42,8 @@ public class Product {
         return this.price;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
     public int getId() {
