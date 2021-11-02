@@ -15,19 +15,22 @@ public class AIShopData {
         initialise();
     }
 
+    private int optionInput() {
+        String[] input = scanner.nextLine().split(" ");
+        int option = -1;
+
+        if (input.length == 1 && input[0].length() == 1 && 48 < input[0].charAt(0) && input[0].charAt(0) < 57) {
+            option = Integer.parseInt(input[0]);
+        }
+        return option;
+    }
+
     public void programManagement() {
-        String[] input;
         int option;
         while (true) {
             System.out.println("Welcome to the AI Shop system! Choose an option: 1-registration, 2-login, 3-exit");
 
-            input = scanner.nextLine().split(" ");
-            option = -1;
-
-            if (input.length == 1 && input[0].length() == 1 && 48 < input[0].charAt(0) && input[0].charAt(0) < 57) {
-                option = Integer.parseInt(input[0]);
-            }
-
+            option = this.optionInput();
             switch(option) {
                 case 1 -> registration();
                 case 2 -> {
@@ -68,19 +71,12 @@ public class AIShopData {
     }
 
     public void logIn() {
-        String[] input;
         int option;
         boolean end = false;
         while (!end) {
             System.out.println("Choose the type of your account: 1-Admin, 2-Customer, 3-return back");
 
-            input = scanner.nextLine().split(" ");
-            option = -1;
-
-            if (input.length == 1 && input[0].length() == 1 && 48 < input[0].charAt(0) && input[0].charAt(0) < 57) {
-                option = Integer.parseInt(input[0]);
-            }
-
+            option = this.optionInput();
             switch (option) {
                 case 1 -> {
                     System.out.println("Enter your login");
@@ -123,18 +119,12 @@ public class AIShopData {
     public void adminActionsMenu(Admin admin, AIShop aiShop) {
         System.out.println("You have successfully logged in!");
 
-        String[] input;
         int option;
         boolean end = false;
         while (!end) {
             System.out.println("Choose an option, please: 1-log out, 2-manage the warehouse");
 
-            input = scanner.nextLine().split(" ");
-            option = -1;
-
-            if (input.length == 1 && input[0].length() == 1 && 48 < input[0].charAt(0) && input[0].charAt(0) < 57) {
-                option = Integer.parseInt(input[0]);
-            }
+            option = this.optionInput();
 
             switch (option) {
                 case 1 -> {
@@ -151,18 +141,12 @@ public class AIShopData {
     public void userActionsMenu(User user, AIShop aiShop) {
         System.out.println("You have successfully logged in!");
 
-        String[] input;
         int option;
         boolean end = false;
         while (!end) {
             System.out.println("Choose an option, please: 1-log out, 2-assembly an order");
 
-            input = scanner.nextLine().split(" ");
-            option = -1;
-
-            if (input.length == 1 && input[0].length() == 1 && 48 < input[0].charAt(0) && input[0].charAt(0) < 57) {
-                option = Integer.parseInt(input[0]);
-            }
+            option = this.optionInput();
 
             switch (option) {
                 case 1 -> {

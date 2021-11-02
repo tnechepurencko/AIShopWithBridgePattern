@@ -15,7 +15,6 @@ public class User extends Account {
 
     public void orderAssembly(AIShop aiShop) {
         boolean over = false;
-        String[] input;
         int id;
         int option;
         int decision;
@@ -23,12 +22,7 @@ public class User extends Account {
             System.out.println("Choose an option: 1-search the product, 2-add the product to the cart " +
                     "3-remove an item from the cart, 4-Show the cart, 5-Clear the cart, 6-finish order assembly");
 
-            input = in.nextLine().split(" ");
-            option = -1;
-
-            if (input.length == 1 && input[0].length() == 1 && 48 < input[0].charAt(0) && input[0].charAt(0) < 57) {
-                option = Integer.parseInt(input[0]);
-            }
+            option = this.optionInput();
 
             switch (option) {
                 case 1 -> {
@@ -55,22 +49,7 @@ public class User extends Account {
                 case 2 -> {
                     System.out.println("Enter the id of the product, please");
 
-                    input = in.nextLine().split(" ");
-                    id = -1;
-
-                    boolean isNumber = true;
-                    if (input.length == 1) {
-                        for (int i = 0; i < input[0].length(); i++) {
-                            if (48 > input[0].charAt(i) || input[0].charAt(i) > 57) {
-                                isNumber = false;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (isNumber) {
-                        id = Integer.parseInt(input[0]);
-                    }
+                    id = this.inputID();
 
                     Product product = aiShop.findProductByID(id);
                     if (product != null) {
@@ -81,22 +60,7 @@ public class User extends Account {
                 case 3 -> {
                     System.out.println("Enter the id of the product, please:");
 
-                    input = in.nextLine().split(" ");
-                    id = -1;
-
-                    boolean isNumber = true;
-                    if (input.length == 1) {
-                        for (int i = 0; i < input[0].length(); i++) {
-                            if (48 > input[0].charAt(i) || input[0].charAt(i) > 57) {
-                                isNumber = false;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (isNumber) {
-                        id = Integer.parseInt(input[0]);
-                    }
+                    id = this.inputID();
 
                     this.removeFromCart(id);
                 }
@@ -124,12 +88,7 @@ public class User extends Account {
 
                         System.out.println("Continue shopping? 1-yes, 2-no");
 
-                        input = in.nextLine().split(" ");
-                        decision = -1;
-
-                        if (input.length == 1 && input[0].length() == 1 && 48 < input[0].charAt(0) && input[0].charAt(0) < 57) {
-                            decision = Integer.parseInt(input[0]);
-                        }
+                        decision = this.optionInput();
 
                         if (decision == 1) {
                             continue;
